@@ -1,0 +1,26 @@
+
+.Categoryitem{
+    padding: 2rem;
+    width: 46%;
+    margin: 1rem;
+    text-align: center;
+    border: 1px solid gray;
+}
+
+.categorytext{
+    color: red;
+    font-size: 30px;
+}
+
+.Categoryitem:hover{
+    box-shadow:  0px 0px 20px red;
+}
+
+.btncategory{
+    padding: .2rem;
+    border-radius: .5rem;
+    background-color: red;
+    color: white;
+    position: relative;
+    top: 10px;
+}
