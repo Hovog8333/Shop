@@ -1,12 +1,13 @@
 import React from 'react'
-import Categoryitem from '../Categoryitem'
+import Categoryitem from '../Categoryitem';
+import Loading from '../Loading/Loading';
 
-const Categorylist = ({categories}) => {
+const Categorylist = ({categories, loading}) => {
   return (
     <div className='Categorylist' >
       
       {
-        categories.map(category => <Categoryitem key={category.idCategory} {...category} />)
+        loading ? <Loading /> : categories.map(category => <Categoryitem key={category.idCategory} {...category} /> )
       }
     </div>
   )

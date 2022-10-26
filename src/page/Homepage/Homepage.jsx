@@ -2,22 +2,27 @@ import { useState, useEffect } from 'react'
 import { getAllCategories } from '../../Api'
 import Catgorylist from '../../components/Categorylist/'
 import Pagination from '../../components/Pagination';
+import Loading from '../../components/Loading/Loading';
 
 const Homepage = () => {
 
-  const [categories, setcategories]= useState([]);
+  const [categories, setcategories] = useState([]);
   const [filteredCategories, setFilteredCategories] = useState([]);
   const [loading, setLoading] = useState(false);
 
 
-  useEffect(()=> {
-    getAllCategories().then(data =>{
-      setcategories(data.categories);
-    })
-    setLoading(true);
-  },[]);
   useEffect(() => {
-    sliceCategories(0,8);
+    // .then(res => res.json())
+    getAllCategories().then(data => {
+      setcategories(data.categories);
+    }).catch(err => {
+      setLoading(true);
+    })
+
+  }, []);
+
+  useEffect(() => {
+    sliceCategories(0, 8);
   }, [categories]);
 
   const sliceCategories = (x, y) => {
@@ -27,9 +32,13 @@ const Homepage = () => {
 
 
   return (
-    <div className='Homepage' >
-      {loading ? <Catgorylist categories={filteredCategories} /> : <h1 style={{textAlign:'center'}}>Loading...</h1>} 
-      <Pagination categories={categories} sliceCategories={sliceCategories} />
+    <div className={loading ? 'H' : 'Homepage'} >
+      {loading ? <Loading /> :
+        <div>
+          <Catgorylist categories={filteredCategories} loading={loading} />
+          <Pagination categories={categories} sliceCategories={sliceCategories} loading={loading} />
+        </div>
+      } 
     </div>
   )
 }

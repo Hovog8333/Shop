@@ -1,6 +1,7 @@
 
 .Categorylist{
- width: 100%;
+ width: 99%;
  display: flex;
  flex-wrap: wrap;
+ margin-left: 10px;
 }

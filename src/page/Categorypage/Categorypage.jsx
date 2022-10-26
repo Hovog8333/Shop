@@ -2,7 +2,9 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { getFilteredCategory } from '../../Api'
 import { useState, useEffect } from 'react'
 import Mealist from '../../components/Meallist/'
-import CategoryPagination from './CategoryPagination'
+import CategoryPagination from './CategoryPagination';
+import Loading from '../../components/Loading/Loading';
+
 
 const Categorypage = () => {
 
@@ -10,12 +12,15 @@ const Categorypage = () => {
   const [meals, setmeals] = useState([]);
   const navigate = useNavigate();
   const [filteredMeals, setFilteredMeals] = useState([]);
+  const [loading, setLoading] = useState(false);
+
 
 
   useEffect(() => {
     getFilteredCategory(name).then(data => {
-      console.log(data.meals);
       setmeals(data.meals);
+    }).catch(err => {
+      setLoading(true);
     })
   }, []);
   useEffect(() => {
@@ -29,10 +34,17 @@ const Categorypage = () => {
 
   return (
     <div className='Categorypage' >
-      <i className="fa-solid fa-delete-left  btnrecipe" onClick={() => navigate(-1)}  ></i>
+      {
+        loading ? <Loading /> :
+          <div>
+            <i className="fa-solid fa-delete-left  btnrecipe" onClick={() => navigate(-1)}  ></i>
+            <Mealist meals={filteredMeals} />
+            <CategoryPagination meals={meals} sliceMeals={sliceMeals} />
+          </div>
+      }
 
-      <Mealist meals={filteredMeals} />
-      <CategoryPagination meals={meals} sliceMeals={sliceMeals} />
+
+
     </div>
   )
 }

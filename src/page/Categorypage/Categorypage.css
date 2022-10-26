@@ -1,5 +1,8 @@
 
 .Categorypage{
     margin-top: 90px;
-    min-height: 100vh;
+    min-height: 78.9vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }

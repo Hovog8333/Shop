@@ -28,7 +28,7 @@ html::-webkit-scrollbar-thumb{
 
 
 .Recipe{
-    height: 89.3vh;
+    height: 90.31vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,7 +57,7 @@ html::-webkit-scrollbar-thumb{
 
 
 .Pagination{
-    margin-left: calc(50% - 20px);
+    margin-left: calc(50% - 35px);
 }
 .Pagination button{
     /* padding: 5px; */
@@ -66,9 +66,7 @@ html::-webkit-scrollbar-thumb{
     height: 30px;
 }
 
-.CategoryPagination{
-    margin-left: calc(50% - 50px);
-}
+
 .CategoryPagination button{
     /* padding: 5px; */
     margin: 5px;

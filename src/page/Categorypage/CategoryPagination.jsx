@@ -6,7 +6,7 @@ const CategoryPagination = ({ meals, sliceMeals }) => {
         pageNumber.push(i)
     }
     return (
-        <div className="CategoryPagination">
+        <div className="CategoryPagination" style={{marginLeft: `calc(50% - ${pageNumber.length*20}px)`}}>
             {
                 pageNumber.map(el =>
                     <button
